@@ -1,0 +1,15 @@
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+<div class="container">
+	<div class="jumbotron">
+        <h1 class="text-center">Movie Lovers Trivia</h1>
+        <p class="text-center">To start a game enter your search term. Let's play</p>
+        <p>
+        <form action="/results" method="POST">
+         	<div class="form-group">
+			    <input type="string" class="form-control" name="search" placeholder="Enter Search Term">
+			</div>
+			<button type="submit" class="btn btn-primary btn-lg">Search movies</button>
+		</form>
+        </p>
+      </div>
+</div>

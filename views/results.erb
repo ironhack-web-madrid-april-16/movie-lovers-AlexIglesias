@@ -1,0 +1,68 @@
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap.js"></script>
+
+<p></p>
+
+<p>
+  
+</p>
+
+<div class="container">
+	<div class="jumbotron">
+        <h1 class="text-center">Movie Lovers Trivia</h1>
+        <p class="text-center">Which of these movies has the release date in <%= @release_date %>?</p>
+      	<p class="text-center">The search term <strong><%=@search_string%></strong> resulted in <%= @list_length %> movies.</p>
+      	<p class="text-center"><a href="/">Play Again?</a></p>
+    </div>
+</div>
+																												
+
+<div class="container">
+	<div class="row">
+			<%@list.each_with_index do |movie, index|%>
+				<% if @random_movie.title == movie.title %>
+
+				<div class="col-md-4" style="margin-top: 25px;">
+					<img  style="height: 250px; width: 250px" src="<%= movie.poster %>">
+					<button type="submit" class="btn btn-danger btn-default" style="margin-top: 5px;" data-toggle="modal" data-target="#correct_answer" action="/correct_answer" method="POST">Try it!</button>
+				</div>
+				<% else %>
+			
+				<div class="col-md-4" style="margin-top: 25px;">
+					<img style="height: 250px; width: 250px" src="<%= movie.poster %>">
+					<button type="submit" class="btn btn-danger btn-default" style="margin-top: 5px;" data-toggle="modal" data-target="#wrong_answer" action="/wrong_answer" method="POST">Try it!</button>
+				</div>
+				<% end %>
+			<%end%>
+		
+	</div>
+</div>
+
+<div id="wrong_answer" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Oooh, sorry but...</p>
+        <iframe src="//giphy.com/embed/UlelV8vamKENi" width="480" height="271" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/advertising-joaquin-phoenix-gladiator-UlelV8vamKENi">via GIPHY</a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="correct_answer" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+     
+      <div class="modal-body">
+        <p>Congrats!! You're a master</p>
+        <iframe src="//giphy.com/embed/7k0aZNv7cw43m" width="480" height="345" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/7k0aZNv7cw43m">via GIPHY</a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
